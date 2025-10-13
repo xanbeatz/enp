@@ -97,6 +97,12 @@ const Header: React.FC<HeaderProps> = ({
               Investment
             </a>
             <a
+              href="#projects"
+              className="text-gray-900 hover:text-blue-600 transition-colors"
+            >
+              Projects
+            </a>
+            <a
               href="#contact"
               className="text-gray-900 hover:text-blue-600 transition-colors"
             >
@@ -190,6 +196,13 @@ const Header: React.FC<HeaderProps> = ({
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Investment
+              </a>
+              <a
+                href="#projects"
+                className="text-gray-900 hover:text-blue-600 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Projects
               </a>
               <a
                 href="#contact"

@@ -10,7 +10,7 @@ import Events from "./components/Events";
 import FAQ from "./components/FAQ";
 import Locations from "./components/Locations";
 import InvestmentOptions from "./components/InvestmentOptions";
-import ThabaViewLodge from "./components/ThabaViewLodge";
+import Projects from "./components/Projects";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -89,7 +89,7 @@ function App() {
       <Events />
       <Locations />
       <InvestmentOptions />
-      <ThabaViewLodge scrollToContact={scrollToContact} />
+      <Projects scrollToContact={scrollToContact} />
       <FAQ />
       <Team />
       <div ref={contactRef}>
