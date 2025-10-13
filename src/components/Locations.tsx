@@ -2,8 +2,25 @@ import React, { useState } from 'react';
 import { MapPin, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Location data
-const locations = [
+interface Location {
+  id: number;
+  name: string;
+  units: number;
+  soldOut?: boolean;
+  image: string;
+  properties: Array<{
+    id: number;
+    title: string;
+    price: string;
+    beds: number;
+    baths: number;
+    area: string;
+    image: string;
+    description: string;
+  }>;
+}
+
+const locations: Location[] = [
   {
     id: 1,
     name: 'Greenhills',
@@ -111,7 +128,8 @@ const locations = [
   {
     id: 4,
     name: 'Northriding',
-    units: 21,
+    units: 0,
+    soldOut: true,
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1773&q=80',
     properties: [
       {
@@ -189,13 +207,20 @@ const Locations: React.FC = () => {
                   <MapPin size={18} className="text-white mr-2" />
                   <h3 className="text-xl font-bold text-white">{location.name}</h3>
                 </div>
-                
-                <p className="text-white">
-                  <span className="font-semibold">{location.units}</span> units available
-                </p>
-                
-                {/* 
-<button 
+
+                {location.soldOut ? (
+                  <div>
+                    <p className="text-red-400 font-bold mb-1">Stands Sold Out</p>
+                    <p className="text-white text-sm">Full building package coming soon</p>
+                  </div>
+                ) : (
+                  <p className="text-white">
+                    <span className="font-semibold">{location.units}</span> units available
+                  </p>
+                )}
+
+                {/*
+<button
   className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition-colors"
   onClick={() => handleViewProperties(location.id)}
 >

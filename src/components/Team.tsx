@@ -12,15 +12,6 @@ const teamMembers = [
     image: '/siyabonga.jpg'
   },
   {
-    id: 2,
-    name: 'DENNIS MOJAKI',
-    position: 'Sales Person',
-    experience: '4 years of experience',
-    description: 'Dennis has a passion for helping first-time homebuyers find their dream home. His extensive knowledge of the local real estate market and attention to detail ensure that his clients receive the best service possible.',
-    email: 'info@ekasinobleproperties.com',
-    image: '/dennis.jpg'
-  },
-  {
     id: 3,
     name: 'MAPASEKA MOJAKI',
     position: 'Rental Specialist',
@@ -42,7 +33,7 @@ const Team: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {teamMembers.map(member => (
             <div key={member.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-64 overflow-hidden">

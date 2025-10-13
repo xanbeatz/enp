@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaWhatsapp } from "react-icons/fa"; // Import WhatsApp icon
+import { FaWhatsapp } from "react-icons/fa";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -10,11 +10,12 @@ import Events from "./components/Events";
 import FAQ from "./components/FAQ";
 import Locations from "./components/Locations";
 import InvestmentOptions from "./components/InvestmentOptions";
+import ThabaViewLodge from "./components/ThabaViewLodge";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
-import "./App.css"; // Import styles for loader
+import "./App.css";
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -88,6 +89,7 @@ function App() {
       <Events />
       <Locations />
       <InvestmentOptions />
+      <ThabaViewLodge scrollToContact={scrollToContact} />
       <FAQ />
       <Team />
       <div ref={contactRef}>

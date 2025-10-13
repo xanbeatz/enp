@@ -6,16 +6,16 @@ interface RentToOwnProps {
   scrollToContact: () => void;
 }
 
-const rentToOwnOptions = [
+const offPlanOptions = [
   {
     id: 1,
-    title: 'Bhubesi Estate',
+    title: 'Noble Apartments',
     deposit: 'R299,000',
     monthly: 'R7,000',
     units: 18,
     image: '/p&s.jpg'
   },
-  
+
 ];
 
 const benefits = [
@@ -38,14 +38,14 @@ const RentToOwn: React.FC<RentToOwnProps> = ({ scrollToContact }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold text-blue-900 mb-4">Rent-to-Own Opportunities</h2>
+          <h2 className="text-3xl font-bold text-blue-900 mb-4">For Sale Off Plan</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Your path to homeownership starts here - No credit checks required!
+            Secure your dream home today - Off plan opportunities available!
           </p>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {rentToOwnOptions.map((option, index) => (
+          {offPlanOptions.map((option, index) => (
             <motion.div 
               key={option.id} 
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
