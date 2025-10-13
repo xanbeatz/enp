@@ -1,41 +1,11 @@
 import React, { useState } from 'react';
 import { Home, Info, Building, Phone, Mail } from 'lucide-react';
-import { sendNewsletterEmail } from '../lib/email';
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [subscribed, setSubscribed] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  const handleSubscribe = async (e: React.FormEvent) => {
+  const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!email) return;
-    
-    setIsSubmitting(true);
-    setError(null);
-    
-    try {
-      const { success: emailSuccess, error: emailError } = await sendNewsletterEmail(email);
-      
-      if (!emailSuccess) {
-        throw emailError || new Error('Failed to send email notification');
-      }
-      
-      setIsSubmitting(false);
-      setSubscribed(true);
-      setEmail('');
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubscribed(false);
-      }, 5000);
-    } catch (err) {
-      console.error('Newsletter subscription error:', err);
-      setIsSubmitting(false);
-      setError('Failed to subscribe. Please try again later.');
-    }
   };
 
   return (
@@ -92,45 +62,26 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Newsletter</h3>
             <p className="text-blue-100 mb-4">Subscribe to our newsletter for updates</p>
-            
-            {subscribed ? (
-              <div className="bg-green-600 text-white p-3 rounded-md mb-3">
-                Thank you for subscribing to our newsletter!
+
+            <form onSubmit={handleSubscribe} className="space-y-3">
+              <div>
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full p-2 rounded-md bg-blue-800 border border-blue-700 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
               </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="space-y-3">
-                {error && (
-                  <div className="bg-red-600 text-white p-3 rounded-md mb-3">
-                    {error}
-                  </div>
-                )}
-                <div>
-                  <input
-                    type="email"
-                    placeholder="Your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="w-full p-2 rounded-md bg-blue-800 border border-blue-700 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                
-                <button 
-                  type="submit" 
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition-colors w-full flex items-center justify-center"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Subscribing...
-                    </>
-                  ) : (
-                    'Subscribe'
-                  )}
-                </button>
-              </form>
-            )}
+
+              <button
+                type="submit"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition-colors w-full flex items-center justify-center"
+              >
+                Subscribe
+              </button>
+            </form>
           </div>
         </div>
         
