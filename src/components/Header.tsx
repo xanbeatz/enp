@@ -47,82 +47,82 @@ const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
+          <nav className="hidden lg:flex space-x-4 xl:space-x-6">
             <a
               href="#"
-              className="text-gray-900 hover:text-blue-600 transition-colors"
+              className="text-gray-900 hover:text-blue-600 transition-colors text-sm xl:text-base"
             >
               Home
             </a>
             <a
               href="#about"
-              className="text-gray-900 hover:text-blue-600 transition-colors"
+              className="text-gray-900 hover:text-blue-600 transition-colors text-sm xl:text-base"
             >
               About
             </a>
             <a
               href="#properties"
-              className="text-gray-900 hover:text-blue-600 transition-colors"
+              className="text-gray-900 hover:text-blue-600 transition-colors text-sm xl:text-base"
             >
               Properties
             </a>
             <a
               href="#rent-to-own"
-              className="text-gray-900 hover:text-blue-600 transition-colors"
+              className="text-gray-900 hover:text-blue-600 transition-colors text-sm xl:text-base"
             >
               Rent-to-Own
             </a>
             <a
               href="#gallery"
-              className="text-gray-900 hover:text-blue-600 transition-colors"
+              className="text-gray-900 hover:text-blue-600 transition-colors text-sm xl:text-base"
             >
               Gallery
             </a>
             <a
               href="#events"
-              className="text-gray-900 hover:text-blue-600 transition-colors"
+              className="text-gray-900 hover:text-blue-600 transition-colors text-sm xl:text-base"
             >
               Events
             </a>
             <a
               href="#faq"
-              className="text-gray-900 hover:text-blue-600 transition-colors"
+              className="text-gray-900 hover:text-blue-600 transition-colors text-sm xl:text-base"
             >
               FAQ
             </a>
             <a
-              href="#investment"
-              className="text-gray-900 hover:text-blue-600 transition-colors"
-            >
-              Investment
-            </a>
-            <a
               href="#projects"
-              className="text-gray-900 hover:text-blue-600 transition-colors"
+              className="text-gray-900 hover:text-blue-600 transition-colors text-sm xl:text-base"
             >
               Projects
             </a>
             <a
+              href="#investment"
+              className="text-gray-900 hover:text-blue-600 transition-colors text-sm xl:text-base"
+            >
+              Investment
+            </a>
+            <a
               href="#contact"
-              className="text-gray-900 hover:text-blue-600 transition-colors"
+              className="text-gray-900 hover:text-blue-600 transition-colors text-sm xl:text-base"
             >
               Contact
             </a>
           </nav>
 
-          <div className="hidden md:flex items-center space-x-4">
-            <a 
-              href="tel:0115271978" 
+          <div className="hidden lg:flex items-center space-x-4">
+            <a
+              href="tel:0115271978"
               className="flex items-center hover:text-blue-600 transition-colors"
             >
               <Phone size={16} className="mr-2 text-blue-600" />
-              <span className="text-gray-900">011 527 1978</span>
+              <span className="text-gray-900 text-sm xl:text-base">011 527 1978</span>
             </a>
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-gray-900"
+            className="lg:hidden text-gray-900"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -133,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <motion.div
-          className="md:hidden bg-white border-t border-gray-200"
+          className="lg:hidden bg-white border-t border-gray-200"
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
@@ -191,18 +191,18 @@ const Header: React.FC<HeaderProps> = ({
                 FAQ
               </a>
               <a
-                href="#investment"
-                className="text-gray-900 hover:text-blue-600 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Investment
-              </a>
-              <a
                 href="#projects"
                 className="text-gray-900 hover:text-blue-600 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Projects
+              </a>
+              <a
+                href="#investment"
+                className="text-gray-900 hover:text-blue-600 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Investment
               </a>
               <a
                 href="#contact"
