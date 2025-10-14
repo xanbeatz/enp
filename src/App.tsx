@@ -83,20 +83,22 @@ function App() {
       <Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
       <Hero scrollToContact={scrollToContact} />
       <About />
-      <FeaturedProperties scrollToContact={scrollToContact} />
-      <RentToOwn scrollToContact={scrollToContact} />
-      <Gallery />
-      <Events />
-      <Locations />
-      <InvestmentOptions />
-      <Projects scrollToContact={scrollToContact} />
-      <Team />
-      <FAQ />
-      
-      <div ref={contactRef}>
-        <Contact />
-      </div>
-      <Footer />
+<FeaturedProperties scrollToContact={scrollToContact} />
+<Locations />
+<Gallery />
+<RentToOwn scrollToContact={scrollToContact} />
+<InvestmentOptions />
+<Projects scrollToContact={scrollToContact} />
+<Team />
+<FAQ />
+<Events />
+
+<div ref={contactRef}>
+  <Contact />
+</div>
+
+<Footer />
+
       <ScrollToTop />
 
       {/* WhatsApp Floating Button */}
