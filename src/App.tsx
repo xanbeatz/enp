@@ -88,8 +88,8 @@ function App() {
       <Gallery />
       <Events />
       <Locations />
-      <InvestmentOptions />
       <Projects scrollToContact={scrollToContact} />
+      <InvestmentOptions />
       <FAQ />
       <Team />
       <div ref={contactRef}>
