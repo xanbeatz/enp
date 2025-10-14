@@ -325,7 +325,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
           onClick={scrollToAbout}
           className="flex flex-col items-center text-white cursor-pointer group"
         >
-          <span className="mb-2 text-sm md:text-base font-medium tracking-wide">Scroll Down</span>
+          
           <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center group-hover:bg-white/30 group-hover:border-white/60 transition-all duration-300">
             <ChevronDown size={24} className="text-white" />
           </div>
