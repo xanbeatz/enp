@@ -95,18 +95,20 @@ const PropertyCard: React.FC<{
 
   return (
     <motion.div
-      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+      className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <div className="relative">
+      <div className="relative overflow-hidden group">
         <img
           src={property.image}
           alt={property.title}
-          className="w-full h-64 object-cover cursor-pointer transition-transform duration-500 hover:scale-105"
+          className="w-full h-56 sm:h-64 lg:h-72 object-cover cursor-pointer transition-transform duration-700 group-hover:scale-110"
           onClick={() => onImageClick(property.image, property.title)}
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         {Array.isArray(property.type) ? (
           <div className="absolute top-4 right-4 flex gap-2">
             <div className="bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-full">
@@ -130,24 +132,24 @@ const PropertyCard: React.FC<{
         )}
       </div>
 
-      <div className="p-6">
-        <div className="mb-3">
-          <h3 className="text-xl font-bold text-blue-900 mb-2">
+      <div className="p-5 sm:p-6">
+        <div className="mb-4">
+          <h3 className="text-lg sm:text-xl font-bold text-blue-900 mb-2 line-clamp-2">
             {property.title}
           </h3>
-          <div className="flex justify-between items-center">
-            <p className="text-gray-600 flex items-center">
-              <MapPin size={16} className="mr-1 text-blue-600" />
-              {property.location}
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+            <p className="text-sm sm:text-base text-gray-600 flex items-center">
+              <MapPin size={16} className="mr-1 text-blue-600 flex-shrink-0" />
+              <span className="truncate">{property.location}</span>
             </p>
-            <p className="text-lg font-bold text-blue-600">{property.price}</p>
+            <p className="text-lg sm:text-xl font-bold text-blue-600">{property.price}</p>
           </div>
         </div>
 
-        <p className="text-gray-700 mb-4">{property.description}</p>
+        <p className="text-sm sm:text-base text-gray-700 mb-4 line-clamp-3 leading-relaxed">{property.description}</p>
 
         {property.type !== 'group' ? (
-          <div className="flex justify-between text-gray-600 mb-4">
+          <div className="flex justify-between text-sm sm:text-base text-gray-600 mb-4">
             <div className="flex items-center">
               <Bed size={18} className="mr-1 text-blue-600" />
               <span>{property.beds} Beds</span>
@@ -200,34 +202,34 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
   };
 
   return (
-    <section id="properties" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="properties" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold text-blue-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-900 mb-6">
             Featured Properties
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Exclusive properties and investment opportunities in prime locations
           </p>
         </motion.div>
 
         <motion.div
-          className="flex justify-center mb-8"
+          className="flex justify-center mb-10 md:mb-12 overflow-x-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="inline-flex rounded-lg shadow-md" role="group">
+          <div className="inline-flex rounded-xl shadow-lg" role="group">
             <button
               type="button"
-              className={`px-5 py-3 text-sm font-medium rounded-l-lg ${
+              className={`px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold rounded-l-xl whitespace-nowrap ${
                 activeTab === 'all'
                   ? 'bg-blue-600 text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -238,7 +240,7 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
             </button>
             <button
               type="button"
-              className={`px-5 py-3 text-sm font-medium ${
+              className={`px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold whitespace-nowrap ${
                 activeTab === 'sale'
                   ? 'bg-blue-600 text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -249,7 +251,7 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
             </button>
             <button
               type="button"
-              className={`px-5 py-3 text-sm font-medium ${
+              className={`px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold whitespace-nowrap ${
                 activeTab === 'rent-to-own'
                   ? 'bg-blue-600 text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -260,7 +262,7 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
             </button>
             <button
               type="button"
-              className={`px-5 py-3 text-sm font-medium rounded-r-lg ${
+              className={`px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold rounded-r-xl whitespace-nowrap ${
                 activeTab === 'group'
                   ? 'bg-blue-600 text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -272,7 +274,7 @@ const FeaturedProperties: React.FC<FeaturedPropertiesProps> = ({
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {filteredProperties.map((property, index) => (
             <PropertyCard
               key={property.id}

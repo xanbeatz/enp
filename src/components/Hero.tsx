@@ -135,29 +135,47 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
   }, []);
 
   return (
-    <div className="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white min-h-[calc(100vh-4rem)] md:min-h-screen pt-16 pb-16 md:pt-24 md:pb-24 flex flex-col justify-center">
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-50"
+    <div className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white min-h-screen flex flex-col justify-center overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-20"
         style={{ backgroundImage: "url('/ngonyama.jpg')" }}
       ></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/30 to-blue-900/50"></div>
       
-      <div className="container mx-auto px-4 relative z-10 flex-grow flex flex-col justify-center">
-        <motion.div 
-          className="max-w-3xl mx-auto text-center mb-8 md:mb-12"
-          initial={{ opacity: 0, y: 20 }}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex-grow flex flex-col justify-center py-20">
+        <motion.div
+          className="max-w-4xl mx-auto text-center mb-8 md:mb-12"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">Find Your Dream Home in South Africa's Thriving Communities</h1>
-          <p className="text-lg md:text-xl mb-6 md:mb-8 text-blue-100">Discover properties that match your lifestyle and investment goals with Ekasi Noble Properties.</p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-block mb-4 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
+          >
+            <span className="text-sm md:text-base font-medium text-white">Welcome to Ekasi Noble Properties</span>
+          </motion.div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent drop-shadow-lg">
+            Find Your Dream Home in South Africa's Thriving Communities
+          </h1>
+          <p className="text-lg sm:text-xl lg:text-2xl mb-8 md:mb-10 text-blue-50 max-w-3xl mx-auto leading-relaxed">
+            Discover properties that match your lifestyle and investment goals with innovative financing solutions.
+          </p>
           
-          <div className="bg-white rounded-xl shadow-2xl p-4 md:p-6 search-container">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-3 md:mb-4">
+          <motion.div
+            className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 md:p-8 search-container"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
               <div className="relative">
                 <input
                   type="text"
                   placeholder="Location (e.g. Randfontein)"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                  className="w-full p-3 md:p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700 transition-all"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                 />
@@ -178,7 +196,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
               
               <div className="relative">
                 <select
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 appearance-none"
+                  className="w-full p-3 md:p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700 appearance-none transition-all"
                   value={propertyType}
                   onChange={(e) => setPropertyType(e.target.value)}
                 >
@@ -195,7 +213,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
               
               <div className="relative">
                 <select
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 appearance-none"
+                  className="w-full p-3 md:p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700 appearance-none transition-all"
                   value={priceRange}
                   onChange={(e) => setPriceRange(e.target.value)}
                 >
@@ -212,8 +230,8 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
               </div>
             </div>
             
-            <button 
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center"
+            <button
+              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 md:py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
               onClick={handleSearch}
             >
               {isSearching ? (
@@ -228,7 +246,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
                 </>
               )}
             </button>
-            
+
             {/* Search Results */}
             {showResults && (
               <div className="absolute left-0 right-0 mt-2 mx-4 bg-white rounded-lg shadow-xl z-50 search-results">
@@ -286,31 +304,30 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
                 )}
               </div>
             )}
-          </div>
+          </motion.div>
         </motion.div>
-        
-    
       </div>
-      
+
       {/* Scroll Down Indicator */}
-      <motion.div 
-        className="absolute bottom-4 md:bottom-20 left-0 right-0 flex justify-center"
+      <motion.div
+        className="absolute bottom-8 md:bottom-12 left-0 right-0 flex justify-center z-10"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ 
-          duration: 0.6, 
-          delay: 1,
+        transition={{
+          duration: 0.6,
+          delay: 1.2,
           repeat: Infinity,
-          repeatType: "reverse"
+          repeatType: "reverse",
+          repeatDelay: 0.5
         }}
       >
-        <button 
+        <button
           onClick={scrollToAbout}
           className="flex flex-col items-center text-white cursor-pointer group"
         >
-          <span className="mb-1 md:mb-2 text-xs md:text-sm font-medium">Scroll Down</span>
-          <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white bg-opacity-30 flex items-center justify-center group-hover:bg-opacity-50 transition-all duration-300">
-            <ChevronDown size={20} className="text-white" />
+          <span className="mb-2 text-sm md:text-base font-medium tracking-wide">Scroll Down</span>
+          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center group-hover:bg-white/30 group-hover:border-white/60 transition-all duration-300">
+            <ChevronDown size={24} className="text-white" />
           </div>
         </button>
       </motion.div>
