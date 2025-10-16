@@ -6,7 +6,7 @@
     position: fixed; /* Ensure it's centered in the viewport */
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background: white; /* Optional: Add background color */
     z-index: 9999; /* Ensure it's above other elements */
