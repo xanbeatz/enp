@@ -165,7 +165,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
           </p>
           
           <motion.div
-            className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 md:p-8 search-container"
+            className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 md:p-8 search-container relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -253,7 +253,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="absolute left-0 right-0 mt-4 mx-4 sm:mx-6 md:mx-8 bg-white rounded-xl shadow-2xl z-50 search-results overflow-hidden"
+                className="absolute left-0 right-0 top-full mt-4 bg-white rounded-xl shadow-2xl z-[100] search-results overflow-hidden"
               >
                 <div className="p-4 sm:p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-blue-100">
                   <h3 className="text-base sm:text-lg md:text-xl font-bold text-blue-900">
