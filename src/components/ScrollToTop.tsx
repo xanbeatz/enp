@@ -33,7 +33,7 @@ const ScrollToTop: React.FC = () => {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-5 sm:bottom-6 right-3 sm:right-5 w-12 h-12 sm:w-12 sm:h-12 bg-blue-600 text-white rounded-full shadow-lg z-50 hover:bg-blue-700 focus:outline-none flex items-center justify-center"
+          className="fixed bottom-[140px] sm:bottom-[150px] right-3 sm:right-5 w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 text-white rounded-full shadow-lg z-50 hover:bg-blue-700 focus:outline-none flex items-center justify-center"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
