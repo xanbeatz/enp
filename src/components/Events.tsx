@@ -69,37 +69,38 @@ const Events: React.FC = () => {
   });
 
   return (
-    <section id="events" className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-blue-900 mb-4">Upcoming Events</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+    <section id="events" className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-blue-900 mb-4">Upcoming Events</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
             Join us at our upcoming events to learn more about property investment and homeownership.
           </p>
         </div>
 
-        <div className="mb-8 relative">
-          <div 
+        <div className="mb-10 sm:mb-12">
+          <div
             ref={monthsContainerRef}
-            className="flex justify-start md:justify-center overflow-x-auto py-2 px-8 md:px-0 no-scrollbar"
+            className="flex justify-start md:justify-center overflow-x-auto py-3 px-4 md:px-0 scrollbar-hide"
             style={{
               scrollbarWidth: 'none',
-              msOverflowStyle: 'none'
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch'
             }}
           >
-            <div className="inline-flex rounded-md shadow-sm" role="group">
+            <div className="inline-flex rounded-lg shadow-md bg-white p-1" role="group">
               {monthNames.map((month, index) => (
                 <button
                   key={index}
                   type="button"
-                  className={`px-4 py-2 text-sm font-medium ${
-                    index === 0 ? 'rounded-l-lg' : ''
+                  className={`px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium transition-all duration-200 ${
+                    index === 0 ? 'rounded-l-md' : ''
                   } ${
-                    index === 11 ? 'rounded-r-lg' : ''
+                    index === 11 ? 'rounded-r-md' : ''
                   } ${
                     selectedMonth === index
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-white text-gray-700 hover:bg-gray-100'
+                      ? 'bg-blue-600 text-white shadow-md scale-105'
+                      : 'bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600'
                   } whitespace-nowrap`}
                   onClick={() => setSelectedMonth(index)}
                 >
@@ -109,53 +110,58 @@ const Events: React.FC = () => {
             </div>
           </div>
 
-          <div className="text-center text-gray-600 mt-2">
-            <p>Showing events for {monthNames[selectedMonth]} {currentYear}</p>
+          <div className="text-center text-gray-600 mt-4">
+            <p className="text-sm sm:text-base font-medium">Showing events for {monthNames[selectedMonth]} {currentYear}</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {filteredEvents.map(event => (
-            <div key={event.id} className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col md:flex-row">
-              <div className="md:w-2/5 h-48 md:h-auto overflow-hidden">
-                <img 
-                  src={event.image} 
-                  alt={event.title} 
-                  className="w-full h-full object-cover"
+            <div key={event.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
+              <div className="h-56 sm:h-64 overflow-hidden relative">
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
 
-              <div className="p-6 md:w-3/5">
-                <h3 className="text-xl font-bold text-blue-900 mb-2">{event.title}</h3>
+              <div className="p-6 sm:p-8 flex-1 flex flex-col">
+                <h3 className="text-xl sm:text-2xl font-bold text-blue-900 mb-4">{event.title}</h3>
 
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-start">
-                    <Calendar size={18} className="text-blue-600 mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-gray-700">{event.date}</span>
+                <div className="space-y-3 mb-6 flex-1">
+                  <div className="flex items-start group/item">
+                    <Calendar size={20} className="text-blue-600 mt-0.5 mr-3 flex-shrink-0 group-hover/item:scale-110 transition-transform" />
+                    <span className="text-gray-700 text-sm sm:text-base">{event.date}</span>
                   </div>
 
-                  <div className="flex items-start">
-                    <Clock size={18} className="text-blue-600 mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-gray-700">{event.time}</span>
+                  <div className="flex items-start group/item">
+                    <Clock size={20} className="text-blue-600 mt-0.5 mr-3 flex-shrink-0 group-hover/item:scale-110 transition-transform" />
+                    <span className="text-gray-700 text-sm sm:text-base">{event.time}</span>
                   </div>
 
-                  <div className="flex items-start">
-                    <MapPin size={18} className="text-blue-600 mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-gray-700">{event.location}</span>
+                  <div className="flex items-start group/item">
+                    <MapPin size={20} className="text-blue-600 mt-0.5 mr-3 flex-shrink-0 group-hover/item:scale-110 transition-transform" />
+                    <span className="text-gray-700 text-sm sm:text-base">{event.location}</span>
                   </div>
+
+                  <p className="text-gray-600 text-sm sm:text-base mt-4 leading-relaxed">
+                    {event.description}
+                  </p>
                 </div>
 
                 {event.link ? (
-  <a 
-    href={event.link} 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition-colors text-center block"
+  <a
+    href={event.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 sm:py-3.5 px-6 rounded-lg transition-all duration-200 text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
   >
     Register Now
   </a>
 ) : (
-  <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition-colors">
+  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 sm:py-3.5 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
     Register Now
   </button>
 )}
@@ -165,8 +171,10 @@ const Events: React.FC = () => {
           ))}
 
           {filteredEvents.length === 0 && (
-            <div className="col-span-full text-center py-8">
-              <p className="text-gray-600">No events scheduled for {monthNames[selectedMonth]} {currentYear}</p>
+            <div className="col-span-full text-center py-12 sm:py-16 bg-white rounded-xl shadow-md">
+              <Calendar size={48} className="mx-auto text-gray-300 mb-4" />
+              <p className="text-gray-600 text-base sm:text-lg font-medium">No events scheduled for {monthNames[selectedMonth]} {currentYear}</p>
+              <p className="text-gray-500 text-sm sm:text-base mt-2">Check back soon for upcoming events</p>
             </div>
           )}
         </div>
