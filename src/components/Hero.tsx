@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ChevronDown, ArrowRight } from 'lucide-react';
+import { Search, ChevronDown, ArrowRight, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface HeroProps {
@@ -249,60 +249,80 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
 
             {/* Search Results */}
             {showResults && (
-              <div className="absolute left-0 right-0 mt-2 mx-4 bg-white rounded-lg shadow-xl z-50 search-results">
-                <div className="p-4 border-b border-gray-200">
-                  <h3 className="text-lg font-semibold text-blue-900">
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute left-0 right-0 mt-4 mx-4 sm:mx-6 md:mx-8 bg-white rounded-xl shadow-2xl z-50 search-results overflow-hidden"
+              >
+                <div className="p-4 sm:p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-blue-100">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-blue-900">
                     {searchResults.length} {searchResults.length === 1 ? 'Result' : 'Results'} Found
                   </h3>
                 </div>
-                
+
                 {searchResults.length > 0 ? (
-                  <div className="max-h-60 md:max-h-80 overflow-y-auto">
-                    {searchResults.map((property) => (
-                      <div 
-                        key={property.id} 
-                        className="p-4 border-b border-gray-100 hover:bg-gray-50 cursor-pointer"
+                  <div className="max-h-[300px] sm:max-h-[400px] md:max-h-[500px] overflow-y-auto">
+                    {searchResults.map((property, index) => (
+                      <motion.div
+                        key={property.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                        className="p-4 sm:p-6 border-b border-gray-100 hover:bg-blue-50 cursor-pointer transition-all duration-200 group"
                         onClick={handleResultClick}
                       >
-                        <div className="flex items-start">
-                          <div className="w-20 h-20 flex-shrink-0 mr-4 overflow-hidden rounded-md">
-                            <img 
-                              src={property.image} 
+                        <div className="flex flex-col sm:flex-row items-start gap-4">
+                          <div className="w-full sm:w-24 md:w-28 h-24 sm:h-24 md:h-28 flex-shrink-0 overflow-hidden rounded-lg shadow-md">
+                            <img
+                              src={property.image}
                               alt={property.title}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                             />
                           </div>
-                          <div className="flex-grow">
-                            <div className="flex justify-between items-start">
-                              <div>
-                                <h4 className="font-semibold text-blue-900">{property.title}</h4>
-                                <p className="text-sm text-gray-600">{property.location}</p>
-                                <p className="text-sm text-gray-500">{property.type}</p>
+                          <div className="flex-grow w-full">
+                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                              <div className="flex-grow">
+                                <h4 className="font-bold text-base sm:text-lg text-blue-900 group-hover:text-blue-700 transition-colors">
+                                  {property.title}
+                                </h4>
+                                <p className="text-sm sm:text-base text-gray-600 mt-1 flex items-center">
+                                  <MapPin size={14} className="mr-1 text-blue-500" />
+                                  {property.location}
+                                </p>
+                                <p className="text-xs sm:text-sm text-gray-500 mt-1 inline-block bg-gray-100 px-2 py-1 rounded">
+                                  {property.type}
+                                </p>
                               </div>
-                              <div className="text-blue-600 font-semibold">{property.price}</div>
+                              <div className="text-blue-600 font-bold text-lg sm:text-xl whitespace-nowrap">
+                                {property.price}
+                              </div>
                             </div>
-                            <div className="mt-2 flex justify-end">
-                              <button className="text-sm text-blue-600 hover:text-blue-800 flex items-center">
-                                Enquire Now <ArrowRight size={14} className="ml-1" />
+                            <div className="mt-3 sm:mt-4 flex justify-start sm:justify-end">
+                              <button className="text-sm sm:text-base text-blue-600 hover:text-blue-800 flex items-center font-medium bg-blue-100 hover:bg-blue-200 px-4 py-2 rounded-lg transition-all duration-200 group-hover:shadow-md">
+                                Enquire Now <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                               </button>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 ) : (
-                  <div className="p-6 text-center">
-                    <p className="text-gray-600">No properties found matching your criteria.</p>
-                    <button 
-                      className="mt-3 text-blue-600 hover:text-blue-800"
+                  <div className="p-6 sm:p-8 text-center">
+                    <div className="mb-4">
+                      <Search size={48} className="mx-auto text-gray-300" />
+                    </div>
+                    <p className="text-gray-600 text-base sm:text-lg mb-4">No properties found matching your criteria.</p>
+                    <button
+                      className="mt-2 text-blue-600 hover:text-blue-800 font-medium bg-blue-100 hover:bg-blue-200 px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center"
                       onClick={() => scrollToContact()}
                     >
-                      Contact us for assistance
+                      Contact us for assistance <ArrowRight size={16} className="ml-2" />
                     </button>
                   </div>
                 )}
-              </div>
+              </motion.div>
             )}
           </motion.div>
         </motion.div>
