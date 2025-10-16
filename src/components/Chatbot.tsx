@@ -122,27 +122,27 @@ const Chatbot: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-5 w-[90vw] sm:w-96 h-[500px] bg-white rounded-2xl shadow-2xl z-[9999] flex flex-col overflow-hidden border border-gray-200"
+            className="fixed bottom-[90px] sm:bottom-[100px] right-3 sm:right-5 w-[95vw] max-w-[400px] sm:w-96 h-[70vh] max-h-[550px] sm:h-[500px] bg-white rounded-2xl shadow-2xl z-[9999] flex flex-col overflow-hidden border border-gray-200"
           >
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex justify-between items-center">
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mr-3">
-                  <MessageCircle size={20} />
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-3 sm:p-4 flex justify-between items-center flex-shrink-0">
+              <div className="flex items-center min-w-0">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-full flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0">
+                  <MessageCircle size={18} className="sm:w-5 sm:h-5" />
                 </div>
-                <div>
-                  <h3 className="font-bold">Ekasi Noble Assistant</h3>
-                  <p className="text-xs text-blue-100">Always here to help</p>
+                <div className="min-w-0">
+                  <h3 className="font-bold text-sm sm:text-base truncate">Ekasi Noble Assistant</h3>
+                  <p className="text-xs text-blue-100 hidden sm:block">Always here to help</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="hover:bg-white/20 p-2 rounded-full transition-colors"
+                className="hover:bg-white/20 p-1.5 sm:p-2 rounded-full transition-colors flex-shrink-0"
               >
-                <X size={20} />
+                <X size={18} className="sm:w-5 sm:h-5" />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
+            <div className="flex-1 overflow-y-auto p-3 sm:p-4 bg-gray-50 overscroll-contain">
               {messages.map((message, index) => (
                 <motion.div
                   key={index}
@@ -152,15 +152,15 @@ const Chatbot: React.FC = () => {
                   className={`mb-4 flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
                 >
                   <div
-                    className={`max-w-[80%] p-3 rounded-2xl ${
+                    className={`max-w-[85%] sm:max-w-[80%] p-2.5 sm:p-3 rounded-2xl break-words ${
                       message.isBot
                         ? 'bg-white text-gray-800 shadow-sm border border-gray-200'
                         : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white'
                     }`}
                   >
-                    <p className="text-sm whitespace-pre-line">{message.text}</p>
+                    <p className="text-xs sm:text-sm whitespace-pre-line leading-relaxed">{message.text}</p>
                     <p
-                      className={`text-xs mt-1 ${
+                      className={`text-[10px] sm:text-xs mt-1 ${
                         message.isBot ? 'text-gray-400' : 'text-blue-100'
                       }`}
                     >
@@ -175,7 +175,7 @@ const Chatbot: React.FC = () => {
               <div ref={messagesEndRef} />
             </div>
 
-            <div className="p-4 bg-white border-t border-gray-200">
+            <div className="p-3 sm:p-4 bg-white border-t border-gray-200 flex-shrink-0">
               <div className="flex items-center space-x-2">
                 <input
                   type="text"
@@ -183,13 +183,14 @@ const Chatbot: React.FC = () => {
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Type your message..."
-                  className="flex-1 p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  className="flex-1 p-2.5 sm:p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
                 />
                 <button
                   onClick={handleSendMessage}
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-3 rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-md hover:shadow-lg"
+                  disabled={!inputMessage.trim()}
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-2.5 sm:p-3 rounded-full hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
                 >
-                  <Send size={18} />
+                  <Send size={16} className="sm:w-[18px] sm:h-[18px]" />
                 </button>
               </div>
             </div>
@@ -201,9 +202,10 @@ const Chatbot: React.FC = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-5 right-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-[9999]"
+        className="fixed bottom-[72px] right-3 sm:right-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-[9999]"
+        aria-label={isOpen ? 'Close chat' : 'Open chat'}
       >
-        {isOpen ? <X size={28} /> : <MessageCircle size={28} />}
+        {isOpen ? <X size={24} className="sm:w-7 sm:h-7" /> : <MessageCircle size={24} className="sm:w-7 sm:h-7" />}
       </motion.button>
     </>
   );
