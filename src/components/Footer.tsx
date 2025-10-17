@@ -85,8 +85,19 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
-        <div className="border-t border-blue-800 pt-6 text-center">
+        <div className="border-t border-blue-800 pt-6 text-center space-y-2">
           <p className="text-blue-200">© 2025 Ekasi Noble Properties. All rights reserved.</p>
+          <p className="text-blue-300 text-sm">
+            Crafted by{' '}
+            <a
+              href="https://xannietechs.co.za"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-blue-400 font-semibold transition-colors underline"
+            >
+              Xannie Techs
+            </a>
+          </p>
         </div>
       </div>
     </footer>
