@@ -253,7 +253,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="absolute left-0 right-0 top-full mt-4 bg-white rounded-xl shadow-2xl z-[9998] search-results overflow-hidden"
+                className="fixed left-4 right-4 sm:left-6 sm:right-6 md:left-auto md:right-auto md:w-full md:max-w-4xl top-[200px] sm:top-[220px] md:top-[240px] mx-auto bg-white rounded-xl shadow-2xl z-[10000] search-results overflow-hidden"
               >
                 <div className="p-4 sm:p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-blue-100">
                   <h3 className="text-base sm:text-lg md:text-xl font-bold text-blue-900">
