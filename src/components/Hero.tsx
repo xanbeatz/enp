@@ -19,7 +19,7 @@ const propertyData = [
   },
   {
     id: 2,
-    title: 'Bhubesi Estate',
+    title: 'Nala Estate',
     location: 'Randfontein Greenhills',
     price: 'R849,000',
     type: 'House',
@@ -249,24 +249,12 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
 
             {/* Search Results */}
             {showResults && (
-              <>
-                {/* Backdrop */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[99999]"
-                  onClick={() => setShowResults(false)}
-                />
-
-                {/* Results Container */}
-                <motion.div
-                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                  className="fixed left-4 right-4 sm:left-6 sm:right-6 md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-4xl top-[120px] sm:top-[140px] md:top-[160px] bg-white rounded-xl shadow-2xl z-[100000] search-results overflow-hidden border-4 border-blue-500"
-                >
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="fixed left-4 right-4 sm:left-6 sm:right-6 md:left-auto md:right-auto md:w-full md:max-w-4xl top-[200px] sm:top-[220px] md:top-[240px] mx-auto bg-white rounded-xl shadow-2xl z-[10000] search-results overflow-hidden"
+              >
                 <div className="p-4 sm:p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-blue-100">
                   <h3 className="text-base sm:text-lg md:text-xl font-bold text-blue-900">
                     {searchResults.length} {searchResults.length === 1 ? 'Result' : 'Results'} Found
@@ -334,8 +322,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToContact }) => {
                     </button>
                   </div>
                 )}
-                </motion.div>
-              </>
+              </motion.div>
             )}
           </motion.div>
         </motion.div>
