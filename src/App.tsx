@@ -64,7 +64,8 @@ function App() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
-      <Hero scrollToContact={scrollToContact} />
+      <div className="pt-[72px]">
+        <Hero scrollToContact={scrollToContact} />
       <About />
 <FeaturedProperties scrollToContact={scrollToContact} />
 <Locations />
@@ -81,6 +82,7 @@ function App() {
 </div>
 
 <Footer />
+      </div>
 
       <ScrollToTop />
       <Chatbot />
